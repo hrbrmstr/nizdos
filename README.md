@@ -1,5 +1,7 @@
-nizdos.py - Ancient Indo-European word for "Nest"
+nizdos.py
 ===================================
+
+("nizdos" is an  Ancient Indo-European word for "Nest")
 
 Script to:
 
