@@ -26,3 +26,5 @@ NOT possible without Scott Baker's most excellent pynest interface:
 Example usage: Run in cron every ~5 mins:
 
     */5 * * * * /opt/nest/nizdos.py
+
+I'll be updating the README as well as the repo to add some analysis and visualization code in November 2013
