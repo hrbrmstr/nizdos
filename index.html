@@ -1,0 +1,84 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>nizdos by hrbrmstr</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>nizdos</h1>
+        <p>Python script to talk to nest, log data and send notifications</p>
+
+        <p class="view"><a href="https://github.com/hrbrmstr/nizdos">View the Project on GitHub <small>hrbrmstr/nizdos</small></a></p>
+
+
+        <ul>
+          <li><a href="https://github.com/hrbrmstr/nizdos/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/hrbrmstr/nizdos/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/hrbrmstr/nizdos">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h1>
+<a name="nizdospy" class="anchor" href="#nizdospy"><span class="octicon octicon-link"></span></a>nizdos.py</h1>
+
+<p>("nizdos" is an  Ancient Indo-European word for "Nest")</p>
+
+<p>Script to:</p>
+
+<ul>
+<li>Read heat/AC status from your nest</li>
+<li>Log those variables to Mongo (so you can analyze/visualize it later!)</li>
+<li>Alert you (via Pushover) when heat or AC changes status, whic is primarily why I wrote it</li>
+</ul><p>What is "Nest"? An awesome, stylish thermostat that require hacking to get to YOUR data #sigh</p>
+
+<pre><code>http://nest.com/
+</code></pre>
+
+<p>Never heard of Pushover? Think #spiffy &amp; easy iOS/Android notifications</p>
+
+<pre><code>https://pushover.net/
+</code></pre>
+
+<p>NOT possible without Scott Baker's most excellent pynest interface:</p>
+
+<pre><code>https://github.com/smbaker/pynest
+</code></pre>
+
+<p>(I've cut out all but the necessary components of it for use here)</p>
+
+<p>Example usage: Run in cron every ~5 mins:</p>
+
+<pre><code>*/5 * * * * /opt/nest/nizdos.py
+</code></pre>
+
+<p>I'll be updating the README as well as the repo to add some analysis and visualization code in November 2013</p>
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/hrbrmstr">hrbrmstr</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+              <script type="text/javascript">
+            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+          </script>
+          <script type="text/javascript">
+            try {
+              var pageTracker = _gat._getTracker("UA-79740-1");
+            pageTracker._trackPageview();
+            } catch(err) {}
+          </script>
+
+  </body>
+</html>
