@@ -19,7 +19,7 @@ library(scales)
 nest <- mongoDbConnect('nest')
 
 # setup and execute query
-query <- dbGetQuery(nest, 'readings', "")
+query <- dbGetQuery(nest, 'readings', "", skip=0, limit=0)
 readings <- query[c('date', 'temp', 'humid')]
 
 # convert date string to date/time
