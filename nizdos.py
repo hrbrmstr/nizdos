@@ -203,7 +203,7 @@ rId = nestdb.insert(reading)
 # could be more Pythonic
 
 if (lastAC != str(currAC)):
-    pushoverClient.send_message("A/C is ON" if (currAC == "True") else "A/C is OFF", title="Nizdos", priority=1)
+    pushoverClient.send_message("A/C is ON" if (currAC == True) else "A/C is OFF", title="Nizdos", priority=1)
 
 if (lastHeat != str(currHeat)):
-    pushoverClient.send_message("Heat is ON" if (currAC == "True") else "Heat is OFF", title="Nizdos", priority=1)
+    pushoverClient.send_message("Heat is ON" if (curHeat == True) else "Heat is OFF", title="Nizdos", priority=1)
