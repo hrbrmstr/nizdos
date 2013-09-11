@@ -139,8 +139,8 @@ Config.read(CONFIG_FILE)
 
 # initialize pushover
 
-pushover.init(Config.get("pushover","UserKey"))
-pushoverClient = pushover.Client(Config.get("pushover","AppKey"))
+pushover.init(Config.get("pushover","AppKey"))
+pushoverClient = pushover.Client(Config.get("pushover","UserKey"))
 
 # setup redis
 #
@@ -163,8 +163,8 @@ nestdb = mdb['readings']
 # value comes back from [py]redis as a string O_o so
 # we hack it to be a bool
 
-prevAC = red.get("lastAC") == True
-prevHeat = red.get("lastHeat") == True
+lastAC = red.get("lastAC") 
+lastHeat = red.get("lastHeat")
 
 # initialize connection to Nest
 
@@ -184,8 +184,8 @@ currHeat = nst.status["shared"][nst.serial]["hvac_heater_state"]
 
 # store them in redis
 
-red.set("lastAC",currAC)
-red.set("lastHeat",currHeat)
+red.set("lastAC",str(currAC))
+red.set("lastHeat",str(currHeat))
 
 # setup mongo "reading"
 
@@ -202,13 +202,8 @@ rId = nestdb.insert(reading)
 # send a message to pushover if heat or AC flipped value
 # could be more Pythonic
 
-if ((prevAC != currAC) or (prevHeat != currHeat)):
-   if (prevAC):
-       pushoverClient.send_message("A/C is OFF", title="Nizdos", priority=1)
-   else:
-       pushoverClient.send_message("A/C is ON", title="Nizdos", priority=1)
+if (lastAC != str(currAC)):
+    pushoverClient.send_message("A/C is ON" if (currAC == "True") else "A/C is OFF", title="Nizdos", priority=1)
 
-   if (prevHeat):
-       pushoverClient.send_message("Heating is OFF", title="Nizdos", priority=1)
-   else:
-       pushoverClient.send_message("Heating is ON", title="Nizdos", priority=1)
+if (lastHeat != str(currHeat)):
+    pushoverClient.send_message("Heat is ON" if (currAC == "True") else "Heat is OFF", title="Nizdos", priority=1)
