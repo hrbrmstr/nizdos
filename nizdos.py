@@ -2,6 +2,7 @@
 #
 # nizdos.py - Ancient Indo-European word for "Nest"
 #
+# Version 0.2 - 2013-09-12 - Added Twitter DM'ing
 # Version 0.1 - 2013-09-04
 #
 # Script to:
@@ -59,9 +60,11 @@ import sys
 import datetime
 import ConfigParser
 
-import pushover
 import redis
 import pymongo
+
+import pushover
+import twitter
 
 try:
    import json
@@ -142,6 +145,16 @@ Config.read(CONFIG_FILE)
 pushover.init(Config.get("pushover","AppKey"))
 pushoverClient = pushover.Client(Config.get("pushover","UserKey"))
 
+# initialize twitter
+
+tweet = twitter.Api(consumer_key=Config.get("twitter","consumer_key"),
+                    consumer_secret=Config.get("twitter","consumer_secret"),
+                    access_token_key=Config.get("twitter","access_token"),
+                    access_token_secret=Config.get("twitter","access_token_secret"))
+
+# this is the user we'll be DMing
+rcpt = Config.get("twitter","user")
+
 # setup redis
 #
 # technically, sqlite, mongo or even a dbm or text file could have
@@ -202,8 +215,11 @@ rId = nestdb.insert(reading)
 # send a message to pushover if heat or AC flipped value
 # could be more Pythonic
 
+
 if (lastAC != str(currAC)):
     pushoverClient.send_message("A/C is ON" if (currAC == True) else "A/C is OFF", title="Nizdos", priority=1)
+    tweet.PostUpdate("d " + rcpt + " A/C is ON" if (currAC == True) else " A/C is OFF")
 
 if (lastHeat != str(currHeat)):
-    pushoverClient.send_message("Heat is ON" if (curHeat == True) else "Heat is OFF", title="Nizdos", priority=1)
+    pushoverClient.send_message("Heat is ON" if (currAC == True) else "Heat is OFF", title="Nizdos", priority=1)
+    tweet.PostUpdate("d " + rcpt + " Heat is ON" if (currAC == True) else " Heat is OFF")

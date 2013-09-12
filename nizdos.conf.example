@@ -5,3 +5,10 @@ AppKey=THE_APP_KEY_YOU_CREATED_FOR_THIS
 [nest]
 Username=YOUR_NEST_USERNAME
 Password=YOUR_NEST_PASSWORD
+
+[twitter]
+consumer_key=CK
+consumer_secret=CS
+access_token=AT
+access_token_secret=AS
+user=WHOTODM

@@ -8,6 +8,7 @@ Script to:
 - Read heat/AC status from your nest
 - Log those variables to Mongo (so you can analyze/visualize it later!)
 - Alert you (via Pushover) when heat or AC changes status, whic is primarily why I wrote it
+- Aler you (via Twitter DM) as well. You'll need to comment out those lines in the code if you don't want to setup a twitter app via the API
 
 What is "Nest"? An awesome, stylish thermostat that require hacking to get to YOUR data #sigh
 
