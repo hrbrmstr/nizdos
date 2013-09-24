@@ -221,5 +221,5 @@ if (lastAC != str(currAC)):
     tweet.PostUpdate("d " + rcpt + " A/C is ON" if (currAC == True) else " A/C is OFF")
 
 if (lastHeat != str(currHeat)):
-    pushoverClient.send_message("Heat is ON" if (currAC == True) else "Heat is OFF", title="Nizdos", priority=1)
-    tweet.PostUpdate("d " + rcpt + " Heat is ON" if (currAC == True) else " Heat is OFF")
+    pushoverClient.send_message("Heat is ON" if (currHeat == True) else "Heat is OFF", title="Nizdos", priority=1)
+    tweet.PostUpdate("d " + rcpt + " Heat is ON" if (currHeat == True) else " Heat is OFF")
